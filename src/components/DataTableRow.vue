@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Destination, DestinationType } from '@/api/types/destination'
+import { type Destination } from '@/api/types/destination'
 import { computed } from 'vue'
 import { destinationTypeToEmoji } from '@/helpers/string'
 import { isoStringToLocalFormat } from '@/helpers/date'

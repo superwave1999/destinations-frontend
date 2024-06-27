@@ -90,21 +90,19 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
 }
 
 button,
 input {
-  /* 1 */
   overflow: visible;
 }
 
 button,
 select {
-  /* 1 */
   text-transform: none;
 }
 
@@ -113,4 +111,11 @@ button,
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: none;
 }

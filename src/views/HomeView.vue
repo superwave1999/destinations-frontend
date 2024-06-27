@@ -1,14 +1,16 @@
 <template>
   <div class="page">
     <DestinationFilters :to="route.name as string"></DestinationFilters>
-    <DataTable
-      :rows="data"
-      :headers="['ID', 'Name', 'Description', 'Country', 'Type', 'Updated']"
-      @remove="removeRow"
-      class="table"
-      :class="{ loading: loading }"
-    ></DataTable>
-    <Paginator class="paginator" v-if="paginationState" :state="paginationState" />
+    <div class="content">
+      <DataTable
+        :rows="data"
+        :headers="['ID', 'Name', 'Description', 'Country', 'Type', 'Updated']"
+        @remove="removeRow"
+        class="table"
+        :class="{ loading: loading }"
+      ></DataTable>
+      <Paginator class="paginator" v-if="paginationState" :state="paginationState" />
+    </div>
   </div>
 </template>
 
@@ -18,6 +20,19 @@
   flex-direction: column;
   gap: 2rem;
   width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .page {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) 6fr;
+  }
 }
 
 .table {
@@ -37,7 +52,7 @@
 <script setup lang="ts">
 import DestinationFilters from '@/components/DestinationFilters.vue'
 import DataTable from '@/components/DataTable.vue'
-import Paginator from '@/components/Paginator.vue'
+import Paginator from '@/components/DataTablePaginator.vue'
 import { ref, watch } from 'vue'
 import { type LocationQuery, useRoute } from 'vue-router'
 import Destinations from '@/api/destinations'

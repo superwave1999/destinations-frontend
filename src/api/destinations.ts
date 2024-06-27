@@ -1,7 +1,6 @@
 import AbstractApi from '@/api/abstractApi'
 import type { Destination, DestinationEditable } from '@/api/types/destination'
 import type { PaginationState } from '@/api/types/paginationState'
-import type { ValidationError } from '@/api/types/validationError'
 import type { ResponseBody } from '@/api/types/response'
 
 export default class Destinations extends AbstractApi {

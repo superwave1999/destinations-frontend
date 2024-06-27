@@ -33,9 +33,46 @@ function submit() {
 
 <template>
   <form autocomplete="off" @submit.prevent="() => submit()">
-    <input type="search" v-model="filters.search" placeholder="Search name..." />
-    <button type="submit" class="accent">Search</button>
+    <div class="filters">
+      <input type="search" v-model="filters.search" placeholder="Search name..." />
+    </div>
+    <div class="buttons">
+      <button type="submit" class="accent">Search</button>
+    </div>
   </form>
 </template>
 
-<style scoped></style>
+<style scoped>
+form {
+  display: grid;
+  grid-template-columns: auto min-content;
+  gap: 1rem;
+  height: min-content;
+}
+
+@media (min-width: 992px) {
+  form {
+    grid-template-columns: unset;
+    grid-template-rows: auto min-content;
+  }
+}
+
+form > .filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+form > .filters > * {
+  width: 100%;
+}
+
+form > .buttons {
+  display: flex;
+  align-items: center;
+}
+
+form > .buttons > * {
+  width: 100%;
+}
+</style>

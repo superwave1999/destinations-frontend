@@ -26,3 +26,9 @@ defineEmits(['remove'])
     </tbody>
   </table>
 </template>
+
+<style scoped>
+table {
+  width: 100%;
+}
+</style>
