@@ -36,7 +36,7 @@ function submit() {
   <form autocomplete="off" @submit.prevent="() => submit()">
     <div class="filters">
       <FormControl label="Search by name">
-        <input type="text" v-model="filters.search" :disabled="loading" />
+        <input type="text" v-model="filters.search" />
       </FormControl>
     </div>
     <div class="buttons">
