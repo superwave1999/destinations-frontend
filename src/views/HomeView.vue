@@ -39,11 +39,6 @@
   overflow: scroll;
 }
 
-.loading {
-  opacity: 0.3;
-  pointer-events: none;
-}
-
 .paginator {
   margin: 0 auto;
 }

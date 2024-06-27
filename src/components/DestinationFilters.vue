@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
 import { type LocationQuery, useRoute, useRouter } from 'vue-router'
+import FormControl from '@/components/form/FormControl.vue'
 const route = useRoute()
 const router = useRouter()
 const props = defineProps<{
@@ -34,7 +35,9 @@ function submit() {
 <template>
   <form autocomplete="off" @submit.prevent="() => submit()">
     <div class="filters">
-      <input type="search" v-model="filters.search" placeholder="Search name..." />
+      <FormControl label="Search by name">
+        <input type="text" v-model="filters.search" :disabled="loading" />
+      </FormControl>
     </div>
     <div class="buttons">
       <button type="submit" class="accent">Search</button>

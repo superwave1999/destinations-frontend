@@ -10,8 +10,8 @@
     </div>
     <p class="lower">Last updated: {{ isoStringToLocalFormat(data.updatedAt || '') }}</p>
   </div>
-  <div v-else>
-    <p>Loading...</p>
+  <div v-else class="page">
+    <p class="lower">Loading...</p>
   </div>
 </template>
 

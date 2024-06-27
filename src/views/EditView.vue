@@ -1,25 +1,36 @@
 <template>
-  <form v-if="!loading" class="page" autocomplete="off" @submit.prevent="() => submit()">
-    <input type="text" v-model="data.name" placeholder="Name" />
-    <select v-model="data.type">
-      <option :value="DestinationType.Alpine" selected>Alpine</option>
-      <option :value="DestinationType.City" selected>City</option>
-      <option :value="DestinationType.Coast">Coast</option>
-    </select>
-    <textarea rows="3" placeholder="Description" v-model="data.description"></textarea>
-    <input type="text" v-model="data.countryCode" placeholder="Country (alpha-3 code)" />
-    <button type="submit" class="accent">Submit</button>
+  <form class="page" autocomplete="off" @submit.prevent="() => submit()">
+    <FormControl label="Name" :error="serverErrors?.find((e) => e.field === 'name')?.message">
+      <input type="text" v-model="data.name" />
+    </FormControl>
+    <FormControl label="Type" :error="serverErrors?.find((e) => e.field === 'type')?.message">
+      <select v-model="data.type">
+        <option :value="DestinationType.Alpine" selected>Alpine</option>
+        <option :value="DestinationType.City" selected>City</option>
+        <option :value="DestinationType.Coast">Coast</option>
+      </select>
+    </FormControl>
+    <FormControl
+      label="Description"
+      :error="serverErrors?.find((e) => e.field === 'description')?.message"
+    >
+      <textarea rows="3" placeholder="Description" v-model="data.description"></textarea>
+    </FormControl>
+    <FormControl
+      label="Country (alpha-3 code)"
+      :error="serverErrors?.find((e) => e.field === 'countryCode')?.message"
+    >
+      <input type="text" v-model="data.countryCode" />
+    </FormControl>
+    <button type="submit" class="accent" :disabled="loading">Submit</button>
   </form>
-  <div v-else>
-    <p>Loading...</p>
-  </div>
 </template>
 
 <style scoped>
 .page {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0.8rem;
 
   max-width: 52ch;
   margin: 0 auto;
@@ -37,6 +48,7 @@ import {
 } from '@/api/types/destination'
 import type { ResponseBody } from '@/api/types/response'
 import type { ValidationError } from '@/api/types/validationError'
+import FormControl from '@/components/form/FormControl.vue'
 const route = useRoute()
 const router = useRouter()
 const api = new Destinations()
@@ -98,7 +110,6 @@ async function submit() {
   serverErrors.value = []
   if (response && response.errors) {
     serverErrors.value = response.errors
-    return
   } else if (response) {
     data.value = response.data as Destination
     await router.push({ name: 'home' })

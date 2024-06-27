@@ -3,8 +3,8 @@ import type { ValidationError } from '@/api/types/validationError'
 
 export interface ResponseBody {
   data: object | object[]
-  meta: PaginationState | undefined
-  errors: ValidationError[] | undefined
+  meta?: PaginationState
+  errors?: ValidationError[]
 }
 
 export interface Response {

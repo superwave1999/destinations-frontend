@@ -26,6 +26,12 @@ textarea {
   font-size: 1rem;
 }
 
+a.button,
+button {
+  white-space: nowrap;
+  cursor: pointer;
+}
+
 a.button.accent,
 button.accent {
   background-color: #277e77;
@@ -42,4 +48,10 @@ textarea:hover {
 a.button.accent,
 button.accent:hover {
   background-color: #23605b;
+}
+
+*[disabled],
+.loading {
+  opacity: 0.3;
+  pointer-events: none;
 }

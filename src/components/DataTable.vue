@@ -13,7 +13,7 @@ defineEmits(['remove'])
     <thead>
       <tr>
         <td v-for="(header, index) in headers" :key="index">{{ header }}</td>
-        <td>Actions</td>
+        <td><RouterLink class="button accent" :to="{ name: 'new' }">Create New</RouterLink></td>
       </tr>
     </thead>
     <tbody>
