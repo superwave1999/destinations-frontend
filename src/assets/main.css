@@ -1,35 +1,51 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+table,
+th,
+td {
+  padding: 0.3rem;
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
-a,
-.green {
+a {
+  color: var(--color-text);
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+a.button,
+button,
+input,
+select,
+textarea {
+  padding: 0.4rem 0.6rem;
+  background-color: var(--color-background-mute);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+a.button.accent,
+button.accent {
+  background-color: #277e77;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+a.button:hover,
+input:hover,
+select:hover,
+textarea:hover {
+  background-color: var(--color-background-soft);
+  border: 1px solid var(--color-border-hover);
+}
+
+a.button.accent,
+button.accent:hover {
+  background-color: #23605b;
+}
+
+div.container {
+}
+
+div.container-slim {
 }
